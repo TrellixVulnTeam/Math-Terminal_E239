@@ -1,0 +1,21 @@
+{
+  "name": "math-terminal",
+  "version": "1.0.0",
+  "description": "Web Browser Terminal",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/app.js",
+    "start": "node ./src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "node": "^16.9.1",
+    "nodemon": "^2.0.12",
+    "npm": "^7.23.0"
+  }
+}

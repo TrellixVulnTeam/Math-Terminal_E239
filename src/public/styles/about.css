@@ -1,0 +1,13 @@
+body{
+    border: 0px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #202124;;
+    color: white;
+	font-family: Consolas, monaco, monospace;
+}
+
+code {
+	width: fit-content;
+	border-radius: 5px;
+}

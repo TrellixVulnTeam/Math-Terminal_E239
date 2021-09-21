@@ -1,0 +1,14 @@
+{
+	"terminal": "CMD",
+	"DefaultCMD": {
+		"cursor": "▃"
+	},
+	"DefaultShell": {
+		"cursor": "▋"
+	},
+
+	"commands": {
+		"normal": ["calculator", "help", "about"],
+		"calculator": ["exit","help","root","pow","square"]
+	}
+}

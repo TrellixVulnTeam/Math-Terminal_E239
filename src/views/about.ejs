@@ -1,0 +1,21 @@
+<%- include("partials/header") %>
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css"
+/>
+<link rel="stylesheet" href="/styles/about.css" />
+<script src="/scripts/about.js"></script>
+
+<body>
+	<%- include('partials/nav') -%>
+	<pre><code class="language-html">&lt;p&gt;</code></pre>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+	<script>
+		document.getElementById("about").classList.add("active");
+	</script>
+	<script>
+		hljs.highlightAll();
+	</script>
+</body>
+<%- include("partials/footer") %>
