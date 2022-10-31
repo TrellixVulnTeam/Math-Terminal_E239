@@ -1,1 +1,0 @@
-Thank you for viewing my Github please visit http://mathterminal.com/about for more information.

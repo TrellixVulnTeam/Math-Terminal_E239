@@ -1,21 +1,27 @@
 {
-  "name": "math-terminal",
+  "name": "mathterminal",
   "version": "1.0.0",
-  "description": "Web Browser Terminal",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/app.js",
-    "start": "node ./src/app.js"
+    "run": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UtCrypticiores/Math-Terminal.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UtCrypticiores/Math-Terminal/issues"
+  },
+  "homepage": "https://github.com/UtCrypticiores/Math-Terminal#readme",
   "dependencies": {
-    "dotenv": "^10.0.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "node": "^16.9.1",
-    "nodemon": "^2.0.12",
-    "npm": "^7.23.0"
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "node": "^19.0.0",
+    "nodemon": "^2.0.20",
+    "npm": "^8.19.2"
   }
 }
