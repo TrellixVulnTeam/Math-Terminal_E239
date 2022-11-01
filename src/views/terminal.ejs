@@ -1,2 +1,16 @@
-<div id="body"></div>
-<div id="input"></div>
+<%- include('partials/header') -%>
+
+<script src="/scripts/terminal.js"></script>
+<script src="/scripts/terminalFx.js"></script>
+<!-- Dynamically loaded -->
+<% for (let i = 0; i < files.length; i++) { %>
+<script src="/scripts/commands/<%= files[i] %>"></script>
+<% } %>
+<!-- Dynamically loaded -->
+
+<body onload="onLoad('<%= JSON.stringify(config) %>','<%=commands%>')">
+	<div id="body"></div>
+	<div id="input"></div>
+
+	<%- include('partials/footer') -%>
+</body>
