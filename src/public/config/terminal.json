@@ -1,6 +1,9 @@
 [
 	{
 		"type": "CMD",
-        "name":"Command Prompt"
+		"name": "Command Prompt",
+		"line": ":\\Users\\Admin>",
+		"body": "Microsoft Windows [Version 10.0.22621.674]<br>(c) Microsoft Corporation. All rights reserved.<br><br>",
+		"cursor": "▃"
 	}
 ]

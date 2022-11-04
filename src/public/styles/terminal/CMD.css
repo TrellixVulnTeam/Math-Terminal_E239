@@ -1,0 +1,8 @@
+body {
+	background-color: #000000;
+	color: white;
+	font-family: Consolas, monaco, monospace;
+}
+div {
+	line-height: 25px;
+}

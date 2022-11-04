@@ -8,9 +8,8 @@
 <% } %>
 <!-- Dynamically loaded -->
 
-<body onload="onLoad('<%= JSON.stringify(config) %>','<%=commands%>')">
-	<div id="body"></div>
-	<div id="input"></div>
+	<body onload="onLoad('<%= JSON.stringify(config) %>','<%= commands %>')">
+		<div id="body"></div>
+		<div id="input"></div>
 
 	<%- include('partials/footer') -%>
-</body>
