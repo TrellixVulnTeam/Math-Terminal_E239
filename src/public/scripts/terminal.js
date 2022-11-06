@@ -2,16 +2,18 @@ import * as Fx from "./terminalFx.js";
 
 var lastInput = [];
 var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-export var config, commands, drive = letters.charAt(Math.floor(Math.random() * letters.length));
+export var config,
+	commands,
+	drive = letters.charAt(Math.floor(Math.random() * letters.length));
 
 window.addEventListener("load", async () => {
 	config = await fetch("/config/terminal.json");
 	config = await config.json();
-	config = config[0]
+	config = config[0];
 	commands = await fetch("/config/commands.json");
 	commands = await commands.json();
 	Fx.style();
-	Fx.newLine();
+	Fx.newLine(true);
 });
 
 document.addEventListener("keydown", function onEvent(event) {

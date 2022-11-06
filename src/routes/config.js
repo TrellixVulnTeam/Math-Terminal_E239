@@ -18,7 +18,7 @@ router.get("/:file", (req, res) => {
 	commands = JSON.stringify(commands);
 	try {
 		fs.writeFileSync(
-			path.join(__dirname, "../public/config/commands.json"),
+			path.join(__dirname, "../config/commands.json"),
 			commands
 		);
 	} catch (err) {

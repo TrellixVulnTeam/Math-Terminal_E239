@@ -1,5 +1,6 @@
 import { config, commands, drive } from "./terminal.js";
-export function newLine() {
+
+export function newLine(br) {
 	let input = document.getElementById("input").innerHTML;
 	let body;
 
@@ -8,43 +9,37 @@ export function newLine() {
 		body = config.body;
 		input = "<br>" + drive + config.line;
 		update(input, body, true);
-	} else {
+	} else if (br) {
 		body = "<br>" + input;
 		input = "<br>" + drive + config.line;
+		update(input, body, false);
+	} else {
+		body = "<br>" + input;
+		input = drive + config.line;
 		update(input, body, false);
 	}
 }
 
 export async function command(input) {
-	let command;
+	let command,
+		test = false;
 
 	input.toLowerCase();
 	for (const file of commands) {
-		command = import(`./commands/${file}`);
-		command = command.module;
-		console.log(command);
+		command = await import(`./commands/${file}`);
+		if (command.name == input) {
+			test = true;
+			command.command(commands);
+		}
 	}
-	// switch (input) {
-	// 	case "about":
-	// 		about();
-	// 		break;
-	// 	case "calculator":
-	// 		calculator();
-	// 		break;
-	// 	case "help":
-	// 		 help();
-	// 		break;
-	// 	case "style":
-	// 		style();
-	// 		break;
-	// 	case "clear":
-	// 		clear();
-	// 		break;
-
-	// 	default:
-	// 		search(input);
-	// 		break;
-	// }
+	if (!test) {
+		update(
+			`<br><br>\'${input}\' is not recognized as an internal or external command, operable program or batch file.`,
+			null,
+			true
+		);
+		newLine(true);
+	}
 }
 
 export function update(input, body, add) {
