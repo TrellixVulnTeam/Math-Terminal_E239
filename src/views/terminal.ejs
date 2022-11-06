@@ -1,15 +1,16 @@
 <%- include('partials/header') -%>
 
-<script src="/scripts/terminal.js"></script>
-<script src="/scripts/terminalFx.js"></script>
+<script type="module" src="/scripts/commandLoader.js"></script>
+<script type="script" src="/scripts/terminal.js"></script>
+<script type="script" src="/scripts/terminalFx.js"></script>
 <!-- Dynamically loaded -->
 <% for (let i = 0; i < files.length; i++) { %>
-<script src="/scripts/commands/<%= files[i] %>"></script>
+<script type="script" src="/scripts/commands/<%= files[i] %>"></script>
 <% } %>
 <!-- Dynamically loaded -->
 
-	<body onload="onLoad('<%= JSON.stringify(config) %>','<%= commands %>')">
-		<div id="body"></div>
-		<div id="input"></div>
+<body onload="onLoad('<%= JSON.stringify(config) %>','<%= commands %>')">
+	<div id="body"></div>
+	<div id="input"></div>
 
 	<%- include('partials/footer') -%>
