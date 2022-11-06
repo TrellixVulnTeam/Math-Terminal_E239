@@ -4,19 +4,28 @@ const path = require("path");
 
 const error = require(path.join(__dirname, "../modules/error/error"));
 
-let config;
+router.get("/:file", (req, res) => {
+	let commands;
 
-try {
-	config = fs.readFileSync(
-		path.join(__dirname, "../public/config/terminal.json")
-	);
-	config = JSON.parse(config);
-} catch (err) {
-	error.error(1, err);
-}
+	try {
+		commands = fs.readdirSync(
+			path.join(__dirname, `../public/scripts/commands`)
+		);
+	} catch (err) {
+		error.error(1, err);
+	}
+	console.log(commands);
+	commands = JSON.stringify(commands);
+	try {
+		fs.writeFileSync(
+			path.join(__dirname, "../public/config/commands.json"),
+			commands
+		);
+	} catch (err) {
+		error.error(1, err);
+	}
 
-router.get("/", (req, res) => {
-	res.send(config);
+	res.sendFile(path.join(__dirname, `../config/${req.params.file}`));
 });
 
 module.exports = router;

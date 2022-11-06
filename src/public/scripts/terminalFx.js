@@ -1,5 +1,7 @@
-function newLine() {
+import { config, commands, drive } from "./terminal.js";
+export function newLine() {
 	let input = document.getElementById("input").innerHTML;
+	let body;
 
 	input = input.replace(config.cursor, "");
 	if (input == "") {
@@ -13,32 +15,39 @@ function newLine() {
 	}
 }
 
- function command(input) {
-	input.toLowerCase();
-	switch (input) {
-		case "about":
-			about();
-			break;
-		case "calculator":
-			calculator();
-			break;
-		case "help":
-			 help();
-			break;
-		case "style":
-			style();
-			break;
-		case "clear":
-			clear();
-			break;
+export async function command(input) {
+	let command;
 
-		default:
-			search(input);
-			break;
+	input.toLowerCase();
+	for (const file of commands) {
+		command = import(`./commands/${file}`);
+		command = command.module;
+		console.log(command);
 	}
+	// switch (input) {
+	// 	case "about":
+	// 		about();
+	// 		break;
+	// 	case "calculator":
+	// 		calculator();
+	// 		break;
+	// 	case "help":
+	// 		 help();
+	// 		break;
+	// 	case "style":
+	// 		style();
+	// 		break;
+	// 	case "clear":
+	// 		clear();
+	// 		break;
+
+	// 	default:
+	// 		search(input);
+	// 		break;
+	// }
 }
 
-function update(input, body, add) {
+export function update(input, body, add) {
 	let inputDiv = document.getElementById("input").innerHTML;
 
 	inputDiv = inputDiv.replace(config.cursor, "");
@@ -52,7 +61,7 @@ function update(input, body, add) {
 	document.getElementById("input").innerHTML = input;
 }
 
-function style(sheet) {
+export function style() {
 	let style = document.getElementById("terminal");
 	var link;
 
@@ -61,7 +70,7 @@ function style(sheet) {
 	}
 	link = document.createElement("link");
 	link.id = "terminal";
-	link.href = `/styles/terminal/${sheet}.css`;
+	link.href = `/styles/terminal/${config.type}.css`;
 	link.rel = "stylesheet";
 	link.type = "text/css";
 	document.body.appendChild(link);

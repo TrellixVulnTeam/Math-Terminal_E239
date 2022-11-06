@@ -13,7 +13,7 @@ console.log(`${general.time}Commands Loading...`);
 
 try {
 	config = fs.readFileSync(
-		path.join(__dirname, "../public/config/terminal.json")
+		path.join(__dirname, "../config/terminal.json")
 	);
 	config = JSON.parse(config);
 } catch (err) {

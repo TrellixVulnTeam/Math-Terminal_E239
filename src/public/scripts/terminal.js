@@ -1,22 +1,18 @@
-var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var drive = letters.charAt(Math.floor(Math.random() * letters.length));
-var config,
-	commands,
-	lastInput = [];
+import * as Fx from "./terminalFx.js";
 
-function onLoad(config, commands) {
-	this.commands = commands.split(",");
-	for (let i = 0; i < config.length; i++) {
-		if (config[i] == "\\") {
-			config = config.splice(i, 0, "\\");
-			i++;
-		}
-	}
-	config = JSON.parse(config);
-	this.config = config[0];
-	style(config[0].type);
-	newLine();
-}
+var lastInput = [];
+var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+export var config, commands, drive = letters.charAt(Math.floor(Math.random() * letters.length));
+
+window.addEventListener("load", async () => {
+	config = await fetch("/config/terminal.json");
+	config = await config.json();
+	config = config[0]
+	commands = await fetch("/config/commands.json");
+	commands = await commands.json();
+	Fx.style();
+	Fx.newLine();
+});
 
 document.addEventListener("keydown", function onEvent(event) {
 	let input = document.getElementById("input").innerHTML;
@@ -32,14 +28,14 @@ document.addEventListener("keydown", function onEvent(event) {
 		case "Backspace" || "Delete":
 			if (input != line) {
 				input = input.slice(0, -1);
-				update(input, null, false);
+				Fx.update(input, null, false);
 			}
 			break;
 		case "Tab":
-			search();
+			Fx.search();
 			break;
 		case "Enter":
-			command(input.slice(line.length));
+			Fx.command(input.slice(line.length));
 			lastInput.push(input);
 			break;
 		case "ArrowUp":
@@ -51,7 +47,7 @@ document.addEventListener("keydown", function onEvent(event) {
 
 		default:
 			if (event.key.length == 1) {
-				update(event.key, null, true);
+				Fx.update(event.key, null, true);
 			}
 			break;
 	}
